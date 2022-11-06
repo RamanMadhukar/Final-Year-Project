@@ -1,31 +1,30 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Circle, MapContainer, TileLayer } from "react-leaflet";
 import LocationMarker from "../Components/LocationMarker";
+import axios from 'axios';
 
 const Map = () => {
+
+    const [points, setPoints] = useState([]);
+
     const fillBlueOptions = { fillColor: 'red' }
 
-    const center = [30.213, 75.69];
-    const center2 = [30.2136, 75.7];
-    const center3 = [30.2161488, 75.7015973];
+    useEffect(() => {
+        axios({
+            method: 'GET',
+            url: "http://localhost:5000/patient"
+        })
+            .then(response => {
+                setPoints(response.data)
+            })
+            .catch(error => {
+                console.log('Data not found', error);
 
-    const points = [
-        center, center2, center3
-    ]
-
-    var b = 75.7;
-    var a = 30.21;
-
-    for (var i = 0; i < 100; i++) {
-        var random = Math.random();
-        console.log(random);
-        a = a + random * 0.01 * random;
-        b = b + random * 0.01 * random;
-
-        points.push([a, b]);
-    }
+            });
+    }, [])
 
 
+    console.log(points);
 
     return (
         <>
@@ -39,7 +38,7 @@ const Map = () => {
 
 
                 {points.map(i =>
-                    <Circle center={i} pathOptions={fillBlueOptions} radius={20} />
+                    <Circle center={[i.lat,i.lng]} pathOptions={fillBlueOptions} radius={20} />
                 )}
 
             </MapContainer>

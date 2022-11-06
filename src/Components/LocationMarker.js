@@ -20,7 +20,6 @@ const LocationMarker = () => {
         });
     }, [map]);
 
-    console.log(position);
 
     return position === null ? null : (
         <Marker position={position} >
