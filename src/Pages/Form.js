@@ -3,6 +3,7 @@ import axios from 'axios'
 import './Map.css'
 import { useNavigate } from "react-router-dom";
 
+
 const Form = () => {
 
     const initialValue = {
@@ -11,6 +12,8 @@ const Form = () => {
         disease: '',
         location: ''
     }
+
+    // console.log(process.env.REACT_APP_BASE);
 
     const navigate = useNavigate();
 
@@ -31,7 +34,7 @@ const Form = () => {
         setPatient({ ...patient });
         axios({
             method: 'POST',
-            url: "http://localhost:5000/patient",
+            url: `${process.env.REACT_APP_BASE}/patient`,
             data: { patient, position },
         })
             .then(response => {

@@ -12,7 +12,7 @@ const Map = () => {
     useEffect(() => {
         axios({
             method: 'GET',
-            url: "http://localhost:5000/patient"
+            url: `${process.env.REACT_APP_BASE}/patient`
         })
             .then(response => {
                 setPoints(response.data)
@@ -38,7 +38,7 @@ const Map = () => {
 
 
                 {points.map(i =>
-                    <Circle center={[i.lat,i.lng]} pathOptions={fillBlueOptions} radius={20} />
+                    <Circle center={[i.lat, i.lng]} pathOptions={fillBlueOptions} radius={20} />
                 )}
 
             </MapContainer>
