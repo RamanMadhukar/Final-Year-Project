@@ -10,7 +10,6 @@ const Form = () => {
         name: '',
         age: '',
         disease: '',
-        location: ''
     }
 
     // console.log(process.env.REACT_APP_BASE);
@@ -39,7 +38,7 @@ const Form = () => {
         })
             .then(response => {
                 console.log("submited");
-                navigate('/map')
+                // navigate('/map')
             })
             .catch(error => {
                 console.log(error);
