@@ -42,9 +42,7 @@ const Map = () => {
         else if (e.disease === 'influenza') {
             influenza++;
         }
-        return 0;
-
-        // hi 
+        return 0
     })
 
 

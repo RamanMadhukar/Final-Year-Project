@@ -93,8 +93,8 @@ const Form = () => {
                                 <select required className="form-select mb-3" name="disease" onChange={handleChange('disease')} value={disease} >
                                     <option value="" disabled>Select</option>
                                     <option value="dengue">Dengue</option>
-                                    <option value="nfluenza">Influenza</option>
-                                    <option value="maleria">Malaria</option>
+                                    <option value="ifluenza">Influenza</option>
+                                    <option value="malaria">Malaria</option>
                                 </select>
                                 {/* <button className='btn btn-primary' onClick={fetchLoaction}>loaction</button> */}
                                 <button className='btn btn-primary' onClick={clickSubmit}>Submit</button>
