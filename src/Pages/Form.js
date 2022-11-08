@@ -38,7 +38,7 @@ const Form = () => {
         })
             .then(response => {
                 console.log("submited");
-                // navigate('/map')
+                navigate('/map')
             })
             .catch(error => {
                 console.log(error);
