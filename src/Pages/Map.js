@@ -21,7 +21,7 @@ const Map = () => {
             const allPoints = await getAllPoints();
             setPoints(allPoints.res.data);
             console.log(allPoints);
-            
+
         }
 
         fetchAllPoints();

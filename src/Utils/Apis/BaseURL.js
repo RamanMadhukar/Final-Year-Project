@@ -1,5 +1,5 @@
-const BASE_URL =`${process.env.REACT_APP_BASE}`
+const BASE_URL = `${process.env.REACT_APP_BASE}`;
 
-module.exports = {
+export {
   BASE_URL
 };

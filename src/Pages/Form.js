@@ -39,7 +39,7 @@ const Form = () => {
                 console.log(error);
             });
 
-            postData();
+        postData();
     };
 
     useEffect(() => {
