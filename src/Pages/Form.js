@@ -1,20 +1,16 @@
 import React, { useEffect, useState } from 'react'
-import axios from 'axios'
-import './Map.css'
+import '../CSS/Map.css'
 import { useNavigate } from "react-router-dom";
+import { sendFormData } from '../Utils/Apis/Apis';
 
 
 const Form = () => {
-
-
 
     const initialValue = {
         name: '',
         age: '',
         disease: '',
     }
-
-    // console.log(process.env.REACT_APP_BASE);
 
     const navigate = useNavigate();
 
@@ -31,23 +27,19 @@ const Form = () => {
         setPatient({ ...patient, [name]: event.target.value });
     };
 
-    const clickSubmit = event => {
+    const clickSubmit = async event => {
         event.preventDefault();
         setPatient({ ...patient });
-        axios({
-            method: 'POST',
-            url: `${process.env.REACT_APP_BASE}/patient`,
-            data: { patient, position },
-        })
-            .then(response => {
+
+        const postData = await sendFormData({ patient, position })
+            .then(() => {
                 console.log("submited");
                 navigate('/map')
-            })
-            .catch(error => {
+            }).catch(error => {
                 console.log(error);
             });
 
-
+            postData();
     };
 
     useEffect(() => {
@@ -61,18 +53,6 @@ const Form = () => {
             setloaction(false);
         }
     }, []);
-
-    // const fetchLoaction = (event) => {
-    //     event.preventDefault();
-    //     navigator.geolocation.getCurrentPosition((e) => {
-    //         setPosition({ lat: e.coords.latitude, lng: e.coords.longitude })
-    //         // setloaction(true);
-    //     });
-
-    // }
-
-
-
 
 
     return (
