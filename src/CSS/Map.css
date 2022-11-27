@@ -25,11 +25,23 @@
 }
 
 .infoDiv {
-    width: 200px;
+    width: 13vw;
     height: fit-content;
     border-radius: 10px;
     background-color: #fff;
     padding: 10px;
+}
+
+@media screen and (max-width:480px) {
+    .infoDiv {
+        width: 30vw;
+        font-size: 50%;
+        font-weight: bold;
+    }
+
+    .iconImg {
+        width: 20px;
+    }
 }
 
 .diseaseCheckbox {

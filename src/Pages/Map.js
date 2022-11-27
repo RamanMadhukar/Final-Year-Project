@@ -89,7 +89,7 @@ const Map = () => {
             setrenderpoints(data);
         }
 
-    }, [month])
+    }, [month, points])
 
 
     useEffect(() => {
@@ -100,7 +100,7 @@ const Map = () => {
         settyphoid(renderpoints.filter(e => e.disease === "Typhoid"))
         setcovid(renderpoints.filter(e => e.disease === "Covid-19"))
 
-    }, [renderpoints])
+    }, [renderpoints, points])
     return (
         <>
             <div className="infro">
@@ -111,27 +111,27 @@ const Map = () => {
 
                     <p className='mb-2'>
                         <input className='diseaseCheckbox' type="checkbox" checked={showDengue} onClick={() => setshowDengue(!showDengue)} />
-                        <img src="https://maps.google.com/mapfiles/ms/icons/green-dot.png" alt="" />
+                        <img className="iconImg" src="https://maps.google.com/mapfiles/ms/icons/green-dot.png" alt="" />
                         Dengue: {dengue.length}
                     </p>
                     <p className='mb-2'>
                         <input className='diseaseCheckbox' type="checkbox" checked={showMalaria} onClick={() => setshowMalaria(!showMalaria)} />
-                        <img src="https://maps.google.com/mapfiles/ms/icons/blue-dot.png" alt="" />
+                        <img className="iconImg" src="https://maps.google.com/mapfiles/ms/icons/blue-dot.png" alt="" />
                         Malaria: {malaria.length}
                     </p>
                     <p className='mb-2'>
                         <input className='diseaseCheckbox' type="checkbox" checked={showTuberculosis} onClick={() => setshowTuberculosis(!showTuberculosis)} />
-                        <img src="https://maps.google.com/mapfiles/ms/icons/red-dot.png" alt="" />
-                        Tuberculosis: {tuberculosis.length}
+                        <img className="iconImg" src="https://maps.google.com/mapfiles/ms/icons/red-dot.png" alt="" />
+                        TB: {tuberculosis.length}
                     </p>
                     <p className='mb-2'>
                         <input className='diseaseCheckbox' type="checkbox" checked={showCovid} onClick={() => setshowCovid(!showCovid)} />
-                        <img src="https://maps.google.com/mapfiles/ms/icons/yellow-dot.png" alt="" />
+                        <img className="iconImg" src="https://maps.google.com/mapfiles/ms/icons/yellow-dot.png" alt="" />
                         Covid-19: {covid.length}
                     </p>
                     <p className='mb-2'>
                         <input className='diseaseCheckbox' type="checkbox" checked={showTyphiod} onClick={() => setshowTyphiod(!showTyphiod)} />
-                        <img src="https://maps.google.com/mapfiles/ms/icons/orange-dot.png" alt="" />
+                        <img className="iconImg" src="https://maps.google.com/mapfiles/ms/icons/orange-dot.png" alt="" />
                         Typhoid: {typhoid.length}
                     </p>
                 </div>
