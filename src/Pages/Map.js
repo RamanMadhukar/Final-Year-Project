@@ -8,8 +8,21 @@ import { getAllPoints } from '../Utils/Apis/Apis';
 const Map = () => {
 
     const [points, setPoints] = useState([]);
+    const [showDengue, setshowDengue] = useState(true);
+    const [showMalaria, setshowMalaria] = useState(true);
+    const [showCovid, setshowCovid] = useState(true);
+    const [showTuberculosis, setshowTuberculosis] = useState(true);
+    const [showTyphiod, setshowTyphiod] = useState(true);
+    const [dengue, setdengue] = useState([]);
+    const [malaria, setmalaria] = useState([]);
+    const [tuberculosis, settuberculosis] = useState([]);
+    const [covid, setcovid] = useState([]);
+    const [typhoid, settyphoid] = useState([]);
     const cityNames = [];
     const redZone = [];
+    const [month, setmonth] = useState(['0']);
+    const [renderpoints, setrenderpoints] = useState([]);
+    // var month = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
 
     // color variables
     // const fillBlueOptions = { fillColor: 'blue' }
@@ -21,7 +34,7 @@ const Map = () => {
         const fetchAllPoints = async () => {
             const allPoints = await getAllPoints();
             setPoints(allPoints.res.data);
-            console.log(allPoints);
+            setrenderpoints(allPoints.res.data);
 
         }
 
@@ -29,36 +42,165 @@ const Map = () => {
 
     }, [])
 
-    var dengue = points.filter(e => e.disease === "Dengue");
-    var malaria = points.filter(e => e.disease === "Malaria");
-    var tuberculosis = points.filter(e => e.disease === "Tuberculosis");
-    var covid = points.filter(e => e.disease === "Covid-19");
-    var typhoid = points.filter(e => e.disease === "Typhoid");
-
-    points.map((e) => {
-        if (!cityNames.includes(e.city)) {
-            cityNames.push(e.city);
+    const monthChange = input => e => {
+        if (e.target.checked) {
+            setmonth([...month, input]);
         }
-        return 0;
-    })
-
-    cityNames.map((e) => {
-        if (points.filter(ep => ep.city === e).length > 2) {
-            redZone.push(e);
+        else {
+            setmonth(p => p.filter(ep => ep !== input))
         }
-        return 0;
-    })
+    }
 
 
+
+
+
+
+    // points.map((e) => {
+    //     if (!cityNames.includes(e.city)) {
+    //         cityNames.push(e.city);
+    //     }
+    //     return 0;
+    // })
+
+    // cityNames.map((e) => {
+    //     if (points.filter(ep => ep.city === e).length > 2) {
+    //         redZone.push(e);
+    //     }
+    //     return 0;
+    // })
+
+
+    useEffect(() => {
+
+        if (month.length === 1) {
+            setrenderpoints(points);
+        }
+        else {
+            var data = [];
+            month.map(i => {
+                var jan = points.filter(e => {
+                    const m = e.start_date;
+                    return m.split("-")[1] === i
+                });
+                data.push(...jan);
+            })
+
+            setrenderpoints(data);
+        }
+
+    }, [month])
+
+
+    useEffect(() => {
+
+        setdengue(renderpoints.filter(e => e.disease === "Dengue"))
+        setmalaria(renderpoints.filter(e => e.disease === "Malaria"))
+        settuberculosis(renderpoints.filter(e => e.disease === "Tuberculosis"))
+        settyphoid(renderpoints.filter(e => e.disease === "Typhoid"))
+        setcovid(renderpoints.filter(e => e.disease === "Covid-19"))
+
+    }, [renderpoints])
     return (
         <>
             <div className="infro">
-                <p className='mb-2'>You are at this loaction</p>
-                <p className='mb-2'>Dengue: {dengue.length}</p>
-                <p className='mb-2'>Malaria: {malaria.length}</p>
-                <p className='mb-2'>Tuberculosis: {tuberculosis.length}</p>
-                <p className='mb-2'>Covid-19: {covid.length}</p>
-                <p className='mb-2'>Typhoid: {typhoid.length}</p>
+
+                <div className="infoDiv">
+
+                    <p className='mb-2'>You are at this loaction</p>
+
+                    <p className='mb-2'>
+                        <input className='diseaseCheckbox' type="checkbox" checked={showDengue} onClick={() => setshowDengue(!showDengue)} />
+                        <img src="https://maps.google.com/mapfiles/ms/icons/green-dot.png" alt="" />
+                        Dengue: {dengue.length}
+                    </p>
+                    <p className='mb-2'>
+                        <input className='diseaseCheckbox' type="checkbox" checked={showMalaria} onClick={() => setshowMalaria(!showMalaria)} />
+                        <img src="https://maps.google.com/mapfiles/ms/icons/blue-dot.png" alt="" />
+                        Malaria: {malaria.length}
+                    </p>
+                    <p className='mb-2'>
+                        <input className='diseaseCheckbox' type="checkbox" checked={showTuberculosis} onClick={() => setshowTuberculosis(!showTuberculosis)} />
+                        <img src="https://maps.google.com/mapfiles/ms/icons/red-dot.png" alt="" />
+                        Tuberculosis: {tuberculosis.length}
+                    </p>
+                    <p className='mb-2'>
+                        <input className='diseaseCheckbox' type="checkbox" checked={showCovid} onClick={() => setshowCovid(!showCovid)} />
+                        <img src="https://maps.google.com/mapfiles/ms/icons/yellow-dot.png" alt="" />
+                        Covid-19: {covid.length}
+                    </p>
+                    <p className='mb-2'>
+                        <input className='diseaseCheckbox' type="checkbox" checked={showTyphiod} onClick={() => setshowTyphiod(!showTyphiod)} />
+                        <img src="https://maps.google.com/mapfiles/ms/icons/orange-dot.png" alt="" />
+                        Typhoid: {typhoid.length}
+                    </p>
+                </div>
+
+                <div className="infoDiv mt-2">
+                    <h6 className='text-center'>Filter by Month</h6>
+
+                    <div className="">
+                        <input className='diseaseCheckbox mr-2' type="checkbox" onChange={monthChange('1')} />
+                        <label htmlFor="">January</label>
+                    </div>
+
+                    <div className="">
+                        <input className='diseaseCheckbox mr-2' type="checkbox" onChange={monthChange('2')} />
+                        <label htmlFor="">February</label>
+                    </div>
+
+                    <div className="">
+                        <input className='diseaseCheckbox mr-2' type="checkbox" onChange={monthChange('3')} />
+                        <label className='ml-3' htmlFor="">March</label>
+                    </div>
+
+                    <div className="">
+                        <input className='diseaseCheckbox mr-2' type="checkbox" onChange={monthChange('4')} />
+                        <label htmlFor="">April</label>
+                    </div>
+
+                    <div className="">
+                        <input className='diseaseCheckbox mr-2' type="checkbox" onChange={monthChange('5')} />
+                        <label htmlFor="">May</label>
+                    </div>
+
+                    <div className="">
+                        <input className='diseaseCheckbox mr-2' type="checkbox" onChange={monthChange('6')} />
+                        <label htmlFor="">June</label>
+                    </div>
+
+                    <div className="">
+                        <input className='diseaseCheckbox mr-2' type="checkbox" onChange={monthChange('7')} />
+                        <label htmlFor="">July</label>
+                    </div>
+
+                    <div className="">
+                        <input className='diseaseCheckbox mr-2' type="checkbox" onChange={monthChange('8')} />
+                        <label htmlFor="">August</label>
+                    </div>
+
+                    <div className="">
+                        <input className='diseaseCheckbox mr-2' type="checkbox" onChange={monthChange('9')} />
+                        <label htmlFor="">September</label>
+                    </div>
+
+                    <div className="">
+                        <input className='diseaseCheckbox mr-2' type="checkbox" onChange={monthChange('10')} />
+                        <label htmlFor="">October</label>
+                    </div>
+
+                    <div className="">
+                        <input className='diseaseCheckbox mr-2' type="checkbox" onChange={monthChange('11')} />
+                        <label htmlFor="">Novmber</label>
+                    </div>
+
+                    <div className="">
+                        <input className='diseaseCheckbox mr-2' type="checkbox" onChange={monthChange('12')} />
+                        <label htmlFor="">December</label>
+                    </div>
+
+                </div>
+
             </div>
             <div className="mapDiv">
                 <MapContainer center={[8.410, -0.09]} zoom={13} scrollWheelZoom={false}>
@@ -73,7 +215,7 @@ const Map = () => {
                         <Circle center={[i.lat, i.long]} pathOptions={fillBlueOptions} radius={100} />
                     )} */}
 
-                    {dengue.map(i =>
+                    {showDengue && dengue.map(i =>
                         <Marker position={[i.lat, i.long]} icon={greenIcon}>
                             <Popup>
                                 <p>{i.city}</p>
@@ -82,7 +224,7 @@ const Map = () => {
                         </Marker>
                     )}
 
-                    {malaria.map(i =>
+                    {showMalaria && malaria.map(i =>
                         <Marker position={[i.lat, i.long]} icon={blueIcon}>
                             <Popup>
                                 <p>{i.city}</p>
@@ -91,7 +233,7 @@ const Map = () => {
                         </Marker>
                     )}
 
-                    {covid.map(i =>
+                    {showCovid && covid.map(i =>
                         <Marker position={[i.lat, i.long]} icon={yellowIcon}>
                             <Popup>
                                 <p>{i.city}</p>
@@ -100,7 +242,7 @@ const Map = () => {
                         </Marker>
                     )}
 
-                    {tuberculosis.map(i =>
+                    {showTuberculosis && tuberculosis.map(i =>
                         <Marker position={[i.lat, i.long]} icon={redIcon}>
                             <Popup>
                                 <p>{i.city}</p>
@@ -109,7 +251,7 @@ const Map = () => {
                         </Marker>
                     )}
 
-                    {typhoid.map(i =>
+                    {showTyphiod && typhoid.map(i =>
                         <Marker position={[i.lat, i.long]} icon={orangeIcon}>
                             <Popup>
                                 <p>{i.city}</p>
