@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { Circle, MapContainer, TileLayer } from "react-leaflet";
+import { Circle, MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
+import { blueIcon, greenIcon, orangeIcon, redIcon, yellowIcon } from '../Components/Icons';
 import LocationMarker from "../Components/LocationMarker";
 import '../CSS/Map.css'
 import { getAllPoints } from '../Utils/Apis/Apis';
@@ -11,8 +12,8 @@ const Map = () => {
     const redZone = [];
 
     // color variables
-    const fillBlueOptions = { fillColor: 'blue' }
-    const fillRedOptions = { fillColor: 'red' }
+    // const fillBlueOptions = { fillColor: 'blue' }
+    // const fillRedOptions = { fillColor: 'red' }
 
 
     useEffect(() => {
@@ -68,29 +69,54 @@ const Map = () => {
 
                     <LocationMarker />
 
-                    {points.map(i =>
+                    {/* {points.map(i =>
                         <Circle center={[i.lat, i.long]} pathOptions={fillBlueOptions} radius={100} />
+                    )} */}
+
+                    {dengue.map(i =>
+                        <Marker position={[i.lat, i.long]} icon={greenIcon}>
+                            <Popup>
+                                <p>{i.city}</p>
+                                <small>{i.lat},{i.long}</small>
+                            </Popup>
+                        </Marker>
                     )}
-                    {/* <Circle center={[25.9210, 80.7996]} pathOptions={fillRedOptions} radius={100000} /> */}
-                    <Circle center={[22.892, 87.9215]} pathOptions={fillRedOptions} radius={100000} />
-                    <Circle center={[26.2554, 88.2009]} pathOptions={fillRedOptions} radius={100000} />
-                    <Circle center={[15.6994, 80.4635]} pathOptions={fillRedOptions} radius={150000} />
-                    <Circle center={[19.2647, 84.8620]} pathOptions={fillRedOptions} radius={100000} />
 
-                    {/* {
-                        redZone.map(e => {
-                            var temp = points.filter(ep => ep.city === e);
-                            var redpoints = [];
-                            temp.map(tem => {
-                                redpoints.push([tem.lat, tem.long]);
-                            })
+                    {malaria.map(i =>
+                        <Marker position={[i.lat, i.long]} icon={blueIcon}>
+                            <Popup>
+                                <p>{i.city}</p>
+                                <small>{i.lat},{i.long}</small>
+                            </Popup>
+                        </Marker>
+                    )}
 
+                    {covid.map(i =>
+                        <Marker position={[i.lat, i.long]} icon={yellowIcon}>
+                            <Popup>
+                                <p>{i.city}</p>
+                                <small>{i.lat},{i.long}</small>
+                            </Popup>
+                        </Marker>
+                    )}
 
-                            return <Polygon pathOptions={fillRedOptions} positions={redpoints} />
+                    {tuberculosis.map(i =>
+                        <Marker position={[i.lat, i.long]} icon={redIcon}>
+                            <Popup>
+                                <p>{i.city}</p>
+                                <small>{i.lat},{i.long}</small>
+                            </Popup>
+                        </Marker>
+                    )}
 
-                        })
-                    } */}
-
+                    {typhoid.map(i =>
+                        <Marker position={[i.lat, i.long]} icon={orangeIcon}>
+                            <Popup>
+                                <p>{i.city}</p>
+                                <small>{i.lat},{i.long}</small>
+                            </Popup>
+                        </Marker>
+                    )}
 
                 </MapContainer>
             </div>

@@ -21,7 +21,7 @@ const LocationMarker = () => {
 
     return position === null ? null : (
         <Marker position={position} >
-            
+
         </Marker>
     );
 }
