@@ -1,0 +1,153 @@
+body {
+    overflow-x: hidden;
+}
+
+.navBar {
+    z-index: 1000000;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.heroDiv {
+    background-image: url('../images/hero-3f0cc555922686722f270757c7aa89d9.jpg');
+    background-size: cover;
+    background-position: center center;
+    overflow-x: hidden;
+}
+
+.detailDiv {
+    background: rgba(255, 255, 255, 0.9);
+    position: relative;
+    z-index: 2;
+    padding: 120px 96px;
+    width: 640px;
+    height: 100%;
+    font-size: 26px;
+    text-align: left;
+    margin-left: 200px;
+}
+
+.how {
+    font-size: 60px;
+    font-weight: 500;
+    margin: 30px 0;
+}
+
+.nichePatti {
+    background-color: rgba(100, 100, 100, 0.3);
+    padding: 2rem;
+    width: 100%;
+}
+
+.mapSec {
+    background: #fff;
+    padding: 100px 150px;
+    position: relative;
+}
+
+.mapSec h2 {
+    margin-bottom: 100px !important;
+}
+
+.mapSec .mapDiv {
+    width: 100%;
+}
+
+.mapSec .leaflet-container {
+    height: 85vh;
+}
+
+.mapSec .infro {
+    right: 200px;
+    top: 250px;
+}
+
+.mapSec .infro .infoDiv {
+    border: 1px solid;
+    border-radius: 10px;
+}
+
+.whatIsImg {
+    height: 89vh;
+    /* background: rgb(244 244 244); */
+}
+
+.whatIsImg {
+    background-image: url('../images/bg-man-book-3b4d4fa2187c84dd628b2008f8ac4468.jpg');
+    background-size: cover;
+    background-position: center center;
+}
+
+.whatIsInfo {
+    padding: 100px;
+    background: rgb(244, 244, 244);
+    ;
+}
+
+.whatIsInfo h1 {
+    color: #a546be;
+    line-height: 1.5;
+    font-weight: 300;
+    font-size: 20px;
+}
+
+.whatIsInfo h2 {
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+.whatIsInfo p {
+    line-height: 1.5;
+    width: 60%;
+    font-size: 16px;
+    font-weight: 400;
+    color: #717578;
+}
+
+.thirddiv {
+    padding: 100px 200px;
+}
+
+.thirddiv h1 {
+    color: #a546be;
+    line-height: 1.5;
+    font-weight: 300;
+    font-size: 20px;
+    margin-top: 22px;
+    margin-bottom: 80px;
+}
+
+.thirddiv h2 {
+    font-size: 20px;
+    line-height: 1.5;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #000000de;
+}
+
+.thirddiv p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 8px;
+    color: #0000008a;
+    width: 70%;
+}
+
+.footer {
+    padding: 100px 200px;
+    background: rgb(0, 140, 183);
+}
+
+.expand {
+    position: absolute;
+    bottom: 230px;
+    left: 180px;
+    z-index: 1000;
+    border-radius: 5px;
+    background: #ffffff;
+    padding: 15px;
+}
+
+.expand:hover {
+    cursor: pointer;
+}
