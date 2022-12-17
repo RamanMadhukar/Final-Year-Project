@@ -1,25 +1,23 @@
 .form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    padding: 100px 200px;
 }
 
 .fromDiv {
-    max-width: 900px;
-    min-width: 300px;
+   display: flex;
 }
 
 .mapDiv {
+    position: relative;
+    top: 56px;
     width: 100vw;
-    height: 100vh;
+    /* height: 100vh; */
 }
 
 .infro {
 
     position: absolute;
     right: 5px;
-    top: 5px;
+    top: 65px;
     z-index: 122222;
 
 }

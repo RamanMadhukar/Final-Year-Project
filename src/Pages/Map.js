@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Circle, MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import { blueIcon, greenIcon, orangeIcon, redIcon, yellowIcon } from '../Components/Icons';
 import LocationMarker from "../Components/LocationMarker";
+import Navbar from '../Components/Navbar';
 import '../CSS/Map.css'
 import { getAllPoints } from '../Utils/Apis/Apis';
 
@@ -103,164 +104,170 @@ const Map = () => {
     }, [renderpoints, points])
     return (
         <>
-            <div className="infro">
 
-                <div className="infoDiv">
+            <Navbar />
 
-                    <p className='mb-2'>You are at this loaction</p>
+            <div className="">
 
-                    <p className='mb-2'>
-                        <input className='diseaseCheckbox' type="checkbox" checked={showDengue} onClick={() => setshowDengue(!showDengue)} />
-                        <img className="iconImg" src="https://maps.google.com/mapfiles/ms/icons/green-dot.png" alt="" />
-                        Dengue: {dengue.length}
-                    </p>
-                    <p className='mb-2'>
-                        <input className='diseaseCheckbox' type="checkbox" checked={showMalaria} onClick={() => setshowMalaria(!showMalaria)} />
-                        <img className="iconImg" src="https://maps.google.com/mapfiles/ms/icons/blue-dot.png" alt="" />
-                        Malaria: {malaria.length}
-                    </p>
-                    <p className='mb-2'>
-                        <input className='diseaseCheckbox' type="checkbox" checked={showTuberculosis} onClick={() => setshowTuberculosis(!showTuberculosis)} />
-                        <img className="iconImg" src="https://maps.google.com/mapfiles/ms/icons/red-dot.png" alt="" />
-                        TB: {tuberculosis.length}
-                    </p>
-                    <p className='mb-2'>
-                        <input className='diseaseCheckbox' type="checkbox" checked={showCovid} onClick={() => setshowCovid(!showCovid)} />
-                        <img className="iconImg" src="https://maps.google.com/mapfiles/ms/icons/yellow-dot.png" alt="" />
-                        Covid-19: {covid.length}
-                    </p>
-                    <p className='mb-2'>
-                        <input className='diseaseCheckbox' type="checkbox" checked={showTyphiod} onClick={() => setshowTyphiod(!showTyphiod)} />
-                        <img className="iconImg" src="https://maps.google.com/mapfiles/ms/icons/orange-dot.png" alt="" />
-                        Typhoid: {typhoid.length}
-                    </p>
+                <div className="infro">
+
+                    <div className="infoDiv">
+
+                        <p className='mb-2'>You are at this loaction</p>
+
+                        <p className='mb-2'>
+                            <input className='diseaseCheckbox' type="checkbox" checked={showDengue} onClick={() => setshowDengue(!showDengue)} />
+                            <img className="iconImg" src="https://maps.google.com/mapfiles/ms/icons/green-dot.png" alt="" />
+                            Dengue: {dengue.length}
+                        </p>
+                        <p className='mb-2'>
+                            <input className='diseaseCheckbox' type="checkbox" checked={showMalaria} onClick={() => setshowMalaria(!showMalaria)} />
+                            <img className="iconImg" src="https://maps.google.com/mapfiles/ms/icons/blue-dot.png" alt="" />
+                            Malaria: {malaria.length}
+                        </p>
+                        <p className='mb-2'>
+                            <input className='diseaseCheckbox' type="checkbox" checked={showTuberculosis} onClick={() => setshowTuberculosis(!showTuberculosis)} />
+                            <img className="iconImg" src="https://maps.google.com/mapfiles/ms/icons/red-dot.png" alt="" />
+                            TB: {tuberculosis.length}
+                        </p>
+                        <p className='mb-2'>
+                            <input className='diseaseCheckbox' type="checkbox" checked={showCovid} onClick={() => setshowCovid(!showCovid)} />
+                            <img className="iconImg" src="https://maps.google.com/mapfiles/ms/icons/yellow-dot.png" alt="" />
+                            Covid-19: {covid.length}
+                        </p>
+                        <p className='mb-2'>
+                            <input className='diseaseCheckbox' type="checkbox" checked={showTyphiod} onClick={() => setshowTyphiod(!showTyphiod)} />
+                            <img className="iconImg" src="https://maps.google.com/mapfiles/ms/icons/orange-dot.png" alt="" />
+                            Typhoid: {typhoid.length}
+                        </p>
+                    </div>
+
+                    <div className="infoDiv mt-2">
+                        <h6 className='text-center'>Filter by Month</h6>
+
+                        <div className="">
+                            <input className='diseaseCheckbox mr-2' type="checkbox" onChange={monthChange('1')} />
+                            <label htmlFor="">January</label>
+                        </div>
+
+                        <div className="">
+                            <input className='diseaseCheckbox mr-2' type="checkbox" onChange={monthChange('2')} />
+                            <label htmlFor="">February</label>
+                        </div>
+
+                        <div className="">
+                            <input className='diseaseCheckbox mr-2' type="checkbox" onChange={monthChange('3')} />
+                            <label className='ml-3' htmlFor="">March</label>
+                        </div>
+
+                        <div className="">
+                            <input className='diseaseCheckbox mr-2' type="checkbox" onChange={monthChange('4')} />
+                            <label htmlFor="">April</label>
+                        </div>
+
+                        <div className="">
+                            <input className='diseaseCheckbox mr-2' type="checkbox" onChange={monthChange('5')} />
+                            <label htmlFor="">May</label>
+                        </div>
+
+                        <div className="">
+                            <input className='diseaseCheckbox mr-2' type="checkbox" onChange={monthChange('6')} />
+                            <label htmlFor="">June</label>
+                        </div>
+
+                        <div className="">
+                            <input className='diseaseCheckbox mr-2' type="checkbox" onChange={monthChange('7')} />
+                            <label htmlFor="">July</label>
+                        </div>
+
+                        <div className="">
+                            <input className='diseaseCheckbox mr-2' type="checkbox" onChange={monthChange('8')} />
+                            <label htmlFor="">August</label>
+                        </div>
+
+                        <div className="">
+                            <input className='diseaseCheckbox mr-2' type="checkbox" onChange={monthChange('9')} />
+                            <label htmlFor="">September</label>
+                        </div>
+
+                        <div className="">
+                            <input className='diseaseCheckbox mr-2' type="checkbox" onChange={monthChange('10')} />
+                            <label htmlFor="">October</label>
+                        </div>
+
+                        <div className="">
+                            <input className='diseaseCheckbox mr-2' type="checkbox" onChange={monthChange('11')} />
+                            <label htmlFor="">Novmber</label>
+                        </div>
+
+                        <div className="">
+                            <input className='diseaseCheckbox mr-2' type="checkbox" onChange={monthChange('12')} />
+                            <label htmlFor="">December</label>
+                        </div>
+
+                    </div>
+
                 </div>
+                <div className="mapDiv">
+                    <MapContainer center={[8.410, -0.09]} zoom={13} scrollWheelZoom={false}>
+                        <TileLayer
+                            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                        />
 
-                <div className="infoDiv mt-2">
-                    <h6 className='text-center'>Filter by Month</h6>
+                        <LocationMarker />
 
-                    <div className="">
-                        <input className='diseaseCheckbox mr-2' type="checkbox" onChange={monthChange('1')} />
-                        <label htmlFor="">January</label>
-                    </div>
-
-                    <div className="">
-                        <input className='diseaseCheckbox mr-2' type="checkbox" onChange={monthChange('2')} />
-                        <label htmlFor="">February</label>
-                    </div>
-
-                    <div className="">
-                        <input className='diseaseCheckbox mr-2' type="checkbox" onChange={monthChange('3')} />
-                        <label className='ml-3' htmlFor="">March</label>
-                    </div>
-
-                    <div className="">
-                        <input className='diseaseCheckbox mr-2' type="checkbox" onChange={monthChange('4')} />
-                        <label htmlFor="">April</label>
-                    </div>
-
-                    <div className="">
-                        <input className='diseaseCheckbox mr-2' type="checkbox" onChange={monthChange('5')} />
-                        <label htmlFor="">May</label>
-                    </div>
-
-                    <div className="">
-                        <input className='diseaseCheckbox mr-2' type="checkbox" onChange={monthChange('6')} />
-                        <label htmlFor="">June</label>
-                    </div>
-
-                    <div className="">
-                        <input className='diseaseCheckbox mr-2' type="checkbox" onChange={monthChange('7')} />
-                        <label htmlFor="">July</label>
-                    </div>
-
-                    <div className="">
-                        <input className='diseaseCheckbox mr-2' type="checkbox" onChange={monthChange('8')} />
-                        <label htmlFor="">August</label>
-                    </div>
-
-                    <div className="">
-                        <input className='diseaseCheckbox mr-2' type="checkbox" onChange={monthChange('9')} />
-                        <label htmlFor="">September</label>
-                    </div>
-
-                    <div className="">
-                        <input className='diseaseCheckbox mr-2' type="checkbox" onChange={monthChange('10')} />
-                        <label htmlFor="">October</label>
-                    </div>
-
-                    <div className="">
-                        <input className='diseaseCheckbox mr-2' type="checkbox" onChange={monthChange('11')} />
-                        <label htmlFor="">Novmber</label>
-                    </div>
-
-                    <div className="">
-                        <input className='diseaseCheckbox mr-2' type="checkbox" onChange={monthChange('12')} />
-                        <label htmlFor="">December</label>
-                    </div>
-
-                </div>
-
-            </div>
-            <div className="mapDiv">
-                <MapContainer center={[8.410, -0.09]} zoom={13} scrollWheelZoom={false}>
-                    <TileLayer
-                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                    />
-
-                    <LocationMarker />
-
-                    {/* {points.map(i =>
+                        {/* {points.map(i =>
                         <Circle center={[i.lat, i.long]} pathOptions={fillBlueOptions} radius={100} />
                     )} */}
 
-                    {showDengue && dengue.map(i =>
-                        <Marker position={[i.lat, i.long]} icon={greenIcon}>
-                            <Popup>
-                                <p>{i.city}</p>
-                                <small>{i.lat},{i.long}</small>
-                            </Popup>
-                        </Marker>
-                    )}
+                        {showDengue && dengue.map(i =>
+                            <Marker position={[i.lat, i.long]} icon={greenIcon}>
+                                <Popup>
+                                    <p>{i.city}</p>
+                                    <small>{i.lat},{i.long}</small>
+                                </Popup>
+                            </Marker>
+                        )}
 
-                    {showMalaria && malaria.map(i =>
-                        <Marker position={[i.lat, i.long]} icon={blueIcon}>
-                            <Popup>
-                                <p>{i.city}</p>
-                                <small>{i.lat},{i.long}</small>
-                            </Popup>
-                        </Marker>
-                    )}
+                        {showMalaria && malaria.map(i =>
+                            <Marker position={[i.lat, i.long]} icon={blueIcon}>
+                                <Popup>
+                                    <p>{i.city}</p>
+                                    <small>{i.lat},{i.long}</small>
+                                </Popup>
+                            </Marker>
+                        )}
 
-                    {showCovid && covid.map(i =>
-                        <Marker position={[i.lat, i.long]} icon={yellowIcon}>
-                            <Popup>
-                                <p>{i.city}</p>
-                                <small>{i.lat},{i.long}</small>
-                            </Popup>
-                        </Marker>
-                    )}
+                        {showCovid && covid.map(i =>
+                            <Marker position={[i.lat, i.long]} icon={yellowIcon}>
+                                <Popup>
+                                    <p>{i.city}</p>
+                                    <small>{i.lat},{i.long}</small>
+                                </Popup>
+                            </Marker>
+                        )}
 
-                    {showTuberculosis && tuberculosis.map(i =>
-                        <Marker position={[i.lat, i.long]} icon={redIcon}>
-                            <Popup>
-                                <p>{i.city}</p>
-                                <small>{i.lat},{i.long}</small>
-                            </Popup>
-                        </Marker>
-                    )}
+                        {showTuberculosis && tuberculosis.map(i =>
+                            <Marker position={[i.lat, i.long]} icon={redIcon}>
+                                <Popup>
+                                    <p>{i.city}</p>
+                                    <small>{i.lat},{i.long}</small>
+                                </Popup>
+                            </Marker>
+                        )}
 
-                    {showTyphiod && typhoid.map(i =>
-                        <Marker position={[i.lat, i.long]} icon={orangeIcon}>
-                            <Popup>
-                                <p>{i.city}</p>
-                                <small>{i.lat},{i.long}</small>
-                            </Popup>
-                        </Marker>
-                    )}
+                        {showTyphiod && typhoid.map(i =>
+                            <Marker position={[i.lat, i.long]} icon={orangeIcon}>
+                                <Popup>
+                                    <p>{i.city}</p>
+                                    <small>{i.lat},{i.long}</small>
+                                </Popup>
+                            </Marker>
+                        )}
 
-                </MapContainer>
+                    </MapContainer>
+                </div>
             </div>
 
         </>

@@ -1,42 +1,39 @@
 import React from 'react'
 import '../CSS/Home.css'
 import Map from './Map'
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import Navbar from '../Components/Navbar';
 
-const Home = () => {
+const Home = (props) => {
+
+
+const loaction = useLocation();
+
 
     const navigate = useNavigate();
-
-
     const naviateToMap = () => {
         navigate('/map');
     }
 
+    const notOK = () => {
+        navigate('/form');
+    }
+
+    console.log(loaction);
+
     return (
         <>
-            <div className="navBar position-fixed">
-                <nav className="navbar navbar-expand-lg bg-light">
-                    <div className="vw-100 d-flex justify-content-around">
-                        <a className="navbar-brand" href='/'>Disease Tracker</a>
-                        <div className="">
-                            <form className="d-flex" role="search">
-                                <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                                <button className="btn btn-outline-success" type="submit">Search</button>
-                            </form>
-                        </div>
-                    </div>
-                </nav>
-            </div>
+            <Navbar />
 
             <div className="heroDiv">
                 <div className="detailDiv">
                     <p> A community of <strong>7,098,580 </strong>
-                        people tracking local COVID-19 and flu outbreaks.</p>
+                        people tracking infectious disease.</p>
 
                     <p className='how'>How are you feeling?</p>
 
                     <button className='btn btn-success m-3'><i className="fa fa-solid fa-thumbs-up"></i> Healthy, thanks!</button>
-                    <button className='btn btn-danger'><i className="fa fa-solid fa-thumbs-down"></i> Not feeling well</button>
+                    <button onClick={notOK} className='btn btn-danger'><i className="fa fa-solid fa-thumbs-down"></i> Not feeling well</button>
 
                 </div>
 
@@ -47,7 +44,7 @@ const Home = () => {
             </div>
 
             <div className="mapSec">
-                <h2 className='text-center '>See COVID-19 and Flu in your community</h2>
+                <h2 className='text-center '>See disease cases in your locality</h2>
                 <div className="row">
                     <div className="col-8 ">
                         <Map />
@@ -111,6 +108,39 @@ const Home = () => {
             </div>
 
             <footer className='footer'>
+
+                <div className="d-flex justify-content-around">
+                    <div className=" loData">
+                        <h1>856</h1>
+                        <p>cases in your locality</p>
+                    </div>
+
+                    <div className=" loData">
+                        <h1>165</h1>
+                        <p>Malaria cases in your locality</p>
+                    </div>
+
+                    <div className=" loData">
+                        <h1>190</h1>
+                        <p>Covid-19 cases in your locality</p>
+                    </div>
+
+                    <div className=" loData">
+                        <h1>215</h1>
+                        <p>Dengue cases in your locality</p>
+                    </div>
+
+                    <div className=" loData">
+                        <h1>196</h1>
+                        <p>Typhoid cases in your locality</p>
+                    </div>
+
+                    <div className=" loData">
+                        <h1>90</h1>
+                        <p>Tuberculosis cases in your locality</p>
+                    </div>
+                </div>
+                
 
             </footer>
 

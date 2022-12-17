@@ -50,6 +50,8 @@ body {
 
 .mapSec .mapDiv {
     width: 100%;
+    top: 0;
+
 }
 
 .mapSec .leaflet-container {
@@ -134,13 +136,13 @@ body {
 }
 
 .footer {
-    padding: 100px 200px;
+    padding: 100px 50px;
     background: rgb(0, 140, 183);
 }
 
 .expand {
     position: absolute;
-    bottom: 230px;
+    bottom: 130px;
     left: 180px;
     z-index: 1000;
     border-radius: 5px;
@@ -150,4 +152,23 @@ body {
 
 .expand:hover {
     cursor: pointer;
+}
+
+.loData {
+    background: #fff;
+    border-radius: 20px;
+    padding: 50px;
+    width: 200px;
+    height: 200px;
+}
+
+.loData h1 {
+    font-size: 30px;
+    text-align: center;
+}
+
+.loData p {
+    font-size: 16px;
+    color: #0000008a;
+    text-align: justify;
 }
