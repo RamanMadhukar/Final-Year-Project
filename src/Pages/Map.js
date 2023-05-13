@@ -85,6 +85,7 @@ const Map = () => {
                     return m.split("-")[1] === i
                 });
                 data.push(...jan);
+                return 0;
             })
 
             setrenderpoints(data);

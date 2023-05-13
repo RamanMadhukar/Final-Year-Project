@@ -33,7 +33,7 @@ const Form = () => {
         LossofSmell: '',
     }
 
-    const navigate = useNavigate();
+    const navigate = useNavigate(); 
 
     const [patient, setPatient] = useState(initialValue);
     const [position, setPosition] = useState({
