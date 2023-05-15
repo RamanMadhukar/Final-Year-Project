@@ -14,7 +14,7 @@ import {
 import { Chart } from 'react-chartjs-2';
 import { faker } from '@faker-js/faker'
 
-const FutureChart = ({disease,data}) => {
+const FutureChart = ({ disease, data, backgroundColor }) => {
 
     ChartJS.register(
         LinearScale,
@@ -28,7 +28,9 @@ const FutureChart = ({disease,data}) => {
         BarController
     );
 
-    const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+    // const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+    const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
 
     const dataset = {
         labels,
@@ -44,7 +46,7 @@ const FutureChart = ({disease,data}) => {
             {
                 type: 'bar',
                 label: 'total cases',
-                backgroundColor: 'rgb(75, 192, 192)',
+                backgroundColor: backgroundColor,
                 data: data,
                 borderColor: 'white',
                 borderWidth: 2,
